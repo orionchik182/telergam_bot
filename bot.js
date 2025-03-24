@@ -109,9 +109,9 @@ bot.on("message", (msg) => {
 });
 
 const PORT = process.env.PORT || 8080;
-app.use(cors({ origin: "*" }));
+// app.use(cors({ origin: "*" }));
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   // Установите веб-хук
-  bot.setWebHook(`https://telergambot-production.up.railway.app`);
+  // bot.setWebHook(`https://telergambot-production.up.railway.app`);
 });
