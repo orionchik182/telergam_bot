@@ -5,8 +5,8 @@ import dotenv from "dotenv";
 
 // replace the value below with the Telegram token you receive from @BotFather
 dotenv.config();
-const token = process.env.VITE_TELEGRAM_BOT_TOKEN;
-const webAppUrl = process.env.VITE_WEB_APP_URL;
+const token = process.env.TELEGRAM_BOT_TOKEN;
+const webAppUrl = process.env.WEB_APP_URL;
 
 const app = express();
 
@@ -66,6 +66,15 @@ bot.on("message", async (msg) => {
   }
 });
 
+app.use((req, res, next) => {
+  console.log(`🔥 Получен запрос: ${req.method} ${req.url}`);
+  next();
+});
+
+app.get("/", (req, res) => {
+  res.send("Бое работает!");
+});
+
 app.post("/web-data", async (req, res) => {
   const { queryId, products, totalPrice } = req.body;
   try {
@@ -92,5 +101,5 @@ app.post("/web-data", async (req, res) => {
   return res.status(500).json({ success: false });
 });
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => console.log("server start port" + PORT));
