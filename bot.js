@@ -91,6 +91,7 @@ app.post("/web-data", async (req, res) => {
     });
     return res.status(200).json({ success: true });
   } catch (e) {
+    console.log("Ошибка при обработке запроса:", e);
     await bot.answerWebAppQuery(queryId, {
       type: "article",
       id: queryId,
@@ -109,7 +110,7 @@ bot.on("message", (msg) => {
 });
 
 const PORT = process.env.PORT || 8080;
-// app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "*" }));
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   // Установите веб-хук

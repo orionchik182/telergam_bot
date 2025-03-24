@@ -70,7 +70,7 @@ function ProductList() {
       totalPrice: getTotalPrice(addItems),
       queryId,
     };
-    fetch("https://bespoke-cendol-868e94.netlify.app/:8080/web-data", {
+    fetch("https://bespoke-cendol-868e94.netlify.app/web-data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
