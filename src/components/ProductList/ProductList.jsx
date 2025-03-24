@@ -63,21 +63,22 @@ const getTotalPrice = (items) => {
 function ProductList() {
   const [addItems, setAddItems] = useState([]);
   const { tg, queryId } = useTelegram();
+  console.log("Query ID:", queryId);
 
-  const onSendData = useCallback(() => {
+  const onSendData = useCallback(async () => {
     const data = {
       products: addItems,
       totalPrice: getTotalPrice(addItems),
       queryId,
     };
-    fetch("https://bespoke-cendol-868e94.netlify.app/web-data", {
+    await fetch("https://bespoke-cendol-868e94.netlify.app/web-data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
-  }, [addItems]);
+  }, [addItems, queryId]);
 
   useEffect(() => {
     tg.onEvent("mainButtonClicked", onSendData);
