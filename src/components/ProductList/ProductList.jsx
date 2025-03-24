@@ -63,6 +63,9 @@ const getTotalPrice = (items) => {
 function ProductList() {
   const [addItems, setAddItems] = useState([]);
   const { tg, queryId } = useTelegram();
+  const queryId2 = tg.initDataUnsafe?.query_id;
+  console.log("Query ID (новый способ):", queryId2);
+  console.log("Telegram объект:", tg);
   console.log("Query ID:", queryId);
 
   const onSendData = useCallback(async () => {
