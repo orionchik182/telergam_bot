@@ -66,9 +66,9 @@ bot.on("message", async (msg) => {
   }
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Бот работает!");
-// });
+app.get("/", (req, res) => {
+  res.send("Бот работает!");
+});
 
 app.post("/web-data", async (req, res) => {
   const { queryId, products, totalPrice } = req.body;
