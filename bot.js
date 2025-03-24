@@ -66,6 +66,10 @@ bot.on("message", async (msg) => {
   }
 });
 
+// app.get("/", (req, res) => {
+//   res.send("Бот работает!");
+// });
+
 app.post("/web-data", async (req, res) => {
   const { queryId, products, totalPrice } = req.body;
   try {
@@ -93,5 +97,5 @@ app.post("/web-data", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 8080;
-
+app.use(cors({ origin: "*" }));
 app.listen(PORT, () => console.log(`server start port ${PORT}`));

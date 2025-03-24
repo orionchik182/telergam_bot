@@ -70,7 +70,7 @@ function ProductList() {
       totalPrice: getTotalPrice(addItems),
       queryId,
     };
-    fetch("http://localhost:80", {
+    fetch("https://telergambot-production.up.railway.app:8080", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
