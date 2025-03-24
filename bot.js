@@ -102,4 +102,5 @@ app.post("/web-data", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log("server start port" + PORT));
+app.use(cors({ origin: "*" }));
+app.listen(PORT, () => console.log(`server start port ${PORT}`));
