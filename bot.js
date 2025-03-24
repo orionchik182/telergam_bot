@@ -66,15 +66,6 @@ bot.on("message", async (msg) => {
   }
 });
 
-app.use((req, res, next) => {
-  console.log(`🔥 Получен запрос: ${req.method} ${req.url}`);
-  next();
-});
-
-app.get("/", (req, res) => {
-  res.send("Бое работает!");
-});
-
 app.post("/web-data", async (req, res) => {
   const { queryId, products, totalPrice } = req.body;
   try {
@@ -102,5 +93,5 @@ app.post("/web-data", async (req, res) => {
 });
 
 const PORT = process.env.PORT || 8080;
-app.use(cors({ origin: "*" }));
+
 app.listen(PORT, () => console.log(`server start port ${PORT}`));
