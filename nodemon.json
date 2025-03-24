@@ -1,5 +1,0 @@
-{
-  "watch": ["bot.js"],
-  "ext": "js",
-  "exec": "node bot.js"
-}
