@@ -11,7 +11,7 @@ export default defineConfig({
     strictPort: true,
     allowedHosts: ["89ab-176-221-227-68.ngrok-free.app"],
   },
-  base: "/telergam_bot/",
+
   build: {
     outDir: "docs",
   },

@@ -16,7 +16,7 @@ function App() {
     <div>
       <Header />
       <Routes>
-        <Route index element={<ProductList />} />
+        <Route path="telergam_bot" element={<ProductList />} />
         <Route path={"form"} element={<Form />} />
       </Routes>
     </div>
