@@ -18,18 +18,19 @@ function Form() {
   }, [country, street, subject]);
 
   useEffect(() => {
-    tg.onEvent("mainButtonClicked", onSendData);
-    return () => {
-      tg.offEvent("mainButtonClicked", onSendData);
-    };
-  }, [onSendData]);
-
-  useEffect(() => {
+    console.log("Форма загружается...");
     tg.ready();
     tg.MainButton.setParams({
       text: "Отправить данные",
     });
   }, []);
+
+  useEffect(() => {
+    tg.onEvent("mainButtonClicked", onSendData);
+    return () => {
+      tg.offEvent("mainButtonClicked", onSendData);
+    };
+  }, [onSendData]);
 
   useEffect(() => {
     if (!street || !country) {
