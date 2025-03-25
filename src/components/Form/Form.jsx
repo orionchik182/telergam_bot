@@ -9,7 +9,11 @@ function Form() {
   const { tg } = useTelegram();
 
   const onSendData = useCallback(() => {
-    console.log("Кнопка нажата! Отправляем данные...");
+    console.log("Кнопка нажата! Отправляем данные...", {
+      country,
+      street,
+      subject,
+    });
     const data = {
       country,
       street,
@@ -17,6 +21,17 @@ function Form() {
     };
     tg.sendData(JSON.stringify(data));
   }, [country, street, subject]);
+
+  tg.onEvent("main_button_pressed", () => {
+    console.log("Кнопка отправки данных нажата", { country, street, subject });
+    const data = {
+      country,
+      street,
+      subject,
+    };
+    console.log("Отправляем данные:", data);
+    tg.sendData(JSON.stringify(data));
+  });
 
   useEffect(() => {
     tg.MainButton.setParams({

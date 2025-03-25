@@ -55,12 +55,17 @@ bot.on("message", async (msg) => {
 
   if (msg.web_app_data?.data) {
     try {
-      const data = JSON.parse(msg?.web_app_data?.data);
-      console.log("Полученные данные:", data);
+      const data = JSON.parse(msg.web_app_data.data);
+      console.log("Полученные данные:", data); // Логируем данные для проверки
 
-      await bot.sendMessage(chatId, "Спасибо за обратную связь!");
-      await bot.sendMessage(chatId, "Ваша страна: " + data?.country);
-      await bot.sendMessage(chatId, "Ваша улица: " + data?.street);
+      if (data?.country && data?.street) {
+        await bot.sendMessage(chatId, "Спасибо за обратную связь!");
+        await bot.sendMessage(chatId, "Ваша страна: " + data.country);
+        await bot.sendMessage(chatId, "Ваша улица: " + data.street);
+      } else {
+        console.log("Ошибка: неполные данные.");
+        await bot.sendMessage(chatId, "Ошибка при получении данных.");
+      }
     } catch (e) {
       console.log("Ошибка при обработке данных:", e);
     }
