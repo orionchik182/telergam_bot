@@ -52,20 +52,20 @@ bot.on("message", async (msg) => {
       },
     });
   }
-});
 
-if (msg.web_app_data?.data) {
-  try {
-    const data = JSON.parse(msg?.web_app_data?.data);
-    console.log("Полученные данные:", data);
+  if (msg.web_app_data?.data) {
+    try {
+      const data = JSON.parse(msg?.web_app_data?.data);
+      console.log("Полученные данные:", data);
 
-    await bot.sendMessage(chatId, "Спасибо за обратную связь!");
-    await bot.sendMessage(chatId, "Ваша страна: " + data?.country);
-    await bot.sendMessage(chatId, "Ваша улица: " + data?.street);
-  } catch (e) {
-    console.log("Ошибка при обработке данных:", e);
+      await bot.sendMessage(chatId, "Спасибо за обратную связь!");
+      await bot.sendMessage(chatId, "Ваша страна: " + data?.country);
+      await bot.sendMessage(chatId, "Ваша улица: " + data?.street);
+    } catch (e) {
+      console.log("Ошибка при обработке данных:", e);
+    }
   }
-}
+});
 
 app.get("/", (req, res) => {
   res.send("Бот работает!");
