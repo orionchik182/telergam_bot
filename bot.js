@@ -38,7 +38,7 @@ bot.on("message", async (msg) => {
   if (text === "/start") {
     await bot.sendMessage(chatId, "Ниже появится кнопка, заполни форму", {
       reply_markup: {
-        keyboard: [
+        inline_keyboard: [
           [{ text: "Заполни форму", web_app: { url: webAppUrl + "/form" } }],
         ],
       },
@@ -52,13 +52,6 @@ bot.on("message", async (msg) => {
       },
     });
   }
-
-  bot.on("message", (msg) => {
-    if (msg.text === "показать товары") {
-      const products = ["Товар 1", "Товар 2", "Товар 3"];
-      bot.sendMessage(msg.chat.id, `Список товаров:\n${products.join("\n")}`);
-    }
-  });
 
   if (msg.web_app_data?.data) {
     try {

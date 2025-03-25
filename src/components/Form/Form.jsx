@@ -25,6 +25,7 @@ function Form() {
   }, [onSendData]);
 
   useEffect(() => {
+    tg.ready();
     tg.MainButton.setParams({
       text: "Отправить данные",
     });
