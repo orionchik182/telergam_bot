@@ -9,6 +9,7 @@ function Form() {
   const { tg } = useTelegram();
 
   const onSendData = useCallback(() => {
+    console.log("Кнопка нажата! Отправляем данные...");
     const data = {
       country,
       street,
