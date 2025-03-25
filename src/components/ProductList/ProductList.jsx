@@ -63,8 +63,7 @@ const getTotalPrice = (items) => {
 function ProductList() {
   const [addItems, setAddItems] = useState([]);
   const { tg, queryId } = useTelegram();
-  const queryId2 = tg.initDataUnsafe?.query_id;
-  console.log("Query ID (новый способ):", queryId2);
+
   console.log("Telegram объект:", tg);
   console.log("Query ID:", queryId);
 
@@ -74,13 +73,19 @@ function ProductList() {
       totalPrice: getTotalPrice(addItems),
       queryId,
     };
-    await fetch("https://bespoke-cendol-868e94.netlify.app/web-data", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    try {
+      await fetch("https://bespoke-cendol-868e94.netlify.app/web-data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      tg.showAlert("Заказ успешно отправлен!", queryId);
+    } catch (error) {
+      tg.showAlert("Ошибка при отправке заказа!");
+      console.error("Ошибка запроса:", error, queryId, tg);
+    }
   }, [addItems, queryId]);
 
   useEffect(() => {

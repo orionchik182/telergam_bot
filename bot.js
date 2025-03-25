@@ -79,6 +79,15 @@ app.get("/", (req, res) => {
 
 app.post("/web-data", async (req, res) => {
   const { queryId, products, totalPrice } = req.body;
+  console.log("Получены данные на сервере:", req.body);
+
+  if (!queryId) {
+    console.log("Ошибка: queryId отсутствует!");
+    return res
+      .status(400)
+      .json({ success: false, error: "queryId отсутствует" });
+  }
+
   try {
     await bot.answerWebAppQuery(queryId, {
       type: "article",
