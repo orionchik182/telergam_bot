@@ -15,11 +15,6 @@ function Form() {
       subject,
     };
     tg.sendData(JSON.stringify(data));
-    try {
-      tg.close();
-    } catch (e) {
-      console.log("Ошибка при закрытии WebApp:", e);
-    }
   }, [country, street, subject]);
 
   useEffect(() => {
