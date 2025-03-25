@@ -89,6 +89,7 @@ app.post("/web-data", async (req, res) => {
   }
 
   try {
+    console.log("Query ID:", queryId);
     await bot.answerWebAppQuery(queryId, {
       type: "article",
       id: queryId,
@@ -98,6 +99,7 @@ app.post("/web-data", async (req, res) => {
           `Поздравляю с покупкой, вы приобрели товар на сумму ` + totalPrice,
       },
     });
+    console.log("Ответ успешно отправлен в Telegram");
     return res.status(200).json({ success: true });
   } catch (e) {
     console.log("Ошибка при обработке запроса:", e);
