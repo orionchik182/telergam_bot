@@ -39,7 +39,7 @@ bot.on("message", async (msg) => {
     await bot.sendMessage(chatId, "Ниже появится кнопка, заполни форму", {
       reply_markup: {
         inline_keyboard: [
-          [{ text: "Заполни форму", web_app: { url: webAppUrl + "/form" } }],
+          [{ text: "Заполни форму", web_app: { url: webAppUrl + "form" } }],
         ],
       },
     });
