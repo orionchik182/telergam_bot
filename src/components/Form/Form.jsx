@@ -16,7 +16,7 @@ function Form() {
     };
     tg.sendData(JSON.stringify(data));
     try {
-      tg.WebApp.close();
+      tg.close();
     } catch (e) {
       console.log("Ошибка при закрытии WebApp:", e);
     }
