@@ -74,7 +74,7 @@ function ProductList() {
       queryId,
     };
     try {
-      await fetch("https://bespoke-cendol-868e94.netlify.app/web-data", {
+      await fetch("https://telergambot-production.up.railway.app/web-data", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
