@@ -15,6 +15,7 @@ function Form() {
       subject,
     };
     tg.sendData(JSON.stringify(data));
+    tg.WebApp.close();
   }, [country, street, subject]);
 
   useEffect(() => {
