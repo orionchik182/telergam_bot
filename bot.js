@@ -54,9 +54,10 @@ bot.on("message", async (msg) => {
   }
 
   if (msg.web_app_data?.data) {
+    await bot.sendMessage(chatId, "Data есть");
     try {
       const data = JSON.parse(msg.web_app_data.data);
-      console.log("Полученные данные:", data); // Логируем данные для проверки
+      await bot.sendMessage(chatId, "вот дата" + data);
 
       if (data?.country && data?.street) {
         await bot.sendMessage(chatId, "Спасибо за обратную связь!");

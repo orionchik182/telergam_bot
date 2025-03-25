@@ -22,17 +22,6 @@ function Form() {
     tg.sendData(JSON.stringify(data));
   }, [country, street, subject]);
 
-  tg.onEvent("main_button_pressed", () => {
-    console.log("Кнопка отправки данных нажата", { country, street, subject });
-    const data = {
-      country,
-      street,
-      subject,
-    };
-    console.log("Отправляем данные:", data);
-    tg.sendData(JSON.stringify(data));
-  });
-
   useEffect(() => {
     tg.MainButton.setParams({
       text: "Отправить данные",
