@@ -88,13 +88,7 @@ app.post("/web-data", async (req, res) => {
       .json({ success: false, error: "queryId отсутствует" });
   }
 
-  await bot.sendMessage(
-    chatId,
-    `Поздравляю с покупкой, вы приобрели товар на сумму ${totalPrice}₽, chatId = ${chatId}`
-  );
-
   try {
-    console.log("Query ID:", queryId);
     await bot.answerWebAppQuery(queryId, {
       type: "article",
       id: queryId,
