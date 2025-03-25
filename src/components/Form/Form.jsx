@@ -18,8 +18,6 @@ function Form() {
   }, [country, street, subject]);
 
   useEffect(() => {
-    console.log("Форма загружается...");
-    tg.ready();
     tg.MainButton.setParams({
       text: "Отправить данные",
     });
